@@ -6,7 +6,7 @@
 
 #define SEVENZYYEARS 2208988800UL
 #define NTP_PACKET_SIZE 48
-#define NTP_DEFAULT_LOCAL_PORT 1337
+#define NTP_DEFAULT_LOCAL_PORT 123
 
 class NTPClient {
   private:
