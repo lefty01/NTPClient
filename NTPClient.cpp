@@ -149,7 +149,8 @@ DateTime NTPClient::getDateTime() const {
   struct tm * ts;
   time_t rawTime = this->getEpochTime();
   ts = localtime(&rawTime);
-  DateTime dt = {ts->tm_sec, ts->tm_min, ts->tm_hour, ts->tm_mday, (ts->tm_mon + 1), (ts->tm_year + 1900)};
+  DateTime dt = { ts->tm_sec, ts->tm_min, ts->tm_hour,
+		  ts->tm_mday, (ts->tm_mon + 1), (ts->tm_year + 1900) };
   return dt;
 }
 
@@ -212,9 +213,9 @@ void NTPClient::sendNTPPacket() {
   // all NTP fields have been given values, now
   // you can send a packet requesting a timestamp:
   if  (this->_poolServerName) {
-    this->_udp->beginPacket(this->_poolServerName, 123);
+    this->_udp->beginPacket(this->_poolServerName, this->_port);
   } else {
-    this->_udp->beginPacket(this->_poolServerIP, 123);
+    this->_udp->beginPacket(this->_poolServerIP, this->_port);
   }
   this->_udp->write(this->_packetBuffer, NTP_PACKET_SIZE);
   this->_udp->endPacket();
