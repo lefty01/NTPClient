@@ -6,7 +6,7 @@
 #include <time.h>
 #include <Time.h>
 
-#define SEVENZYYEARS 2208988800UL
+#define SEVENTYYEARS 2208988800UL
 #define NTP_PACKET_SIZE 48
 #define NTP_DEFAULT_LOCAL_PORT 123
 
@@ -147,6 +147,7 @@ public:
    * @return time in seconds since Jan. 1, 1970
    */
   unsigned long getEpochTime();
+  unsigned long getEpochTimeDST();
   time_t toLocal(time_t utc);
   boolean utcIsDST(time_t utc);
   boolean locIsDST(time_t local);

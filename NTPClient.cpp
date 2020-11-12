@@ -22,12 +22,12 @@
 #include "NTPClient.h"
 
 NTPClient::NTPClient(UDP& udp) {
-  this->_udp            = &udp;
+  this->_udp = &udp;
 }
 
 NTPClient::NTPClient(UDP& udp, long timeOffset) {
-  this->_udp            = &udp;
-  this->_timeOffset     = timeOffset;
+  this->_udp        = &udp;
+  this->_timeOffset = timeOffset;
 }
 
 NTPClient::NTPClient(UDP& udp, const char* poolServerName) {
@@ -219,7 +219,7 @@ bool NTPClient::forceUpdate() {
   // this is NTP time (seconds since Jan 1 1900):
   unsigned long secsSince1900 = highWord << 16 | lowWord;
 
-  this->_currentEpoc = secsSince1900 - SEVENZYYEARS;
+  this->_currentEpoc = secsSince1900 - SEVENTYYEARS;
 
   return true;  // return true after successful update
 }
@@ -233,19 +233,18 @@ bool NTPClient::update() {
   return false;   // return false if update does not occur
 }
 
-// unsigned long NTPClient::getEpochTime_() const {
-//   return this->_timeOffset +   // User offset
-//          this->_currentEpoc + // Epoc returned by the NTP server
-//          ((millis() - this->_lastUpdate) / 1000); // Time since last update
-// }
 unsigned long NTPClient::getEpochTime() {
-  return ((this->_timeOffset + locIsDST(toLocal(this->_currentEpoc))) * 60 * 60) + // User offset
+  return this->_timeOffset + this->_currentEpoc + // user offset + Epoc returned by the NTP server
+    ((millis() - this->_lastUpdate) / 1000); // Time since last update
+}
+unsigned long NTPClient::getEpochTimeDST() {
+  return this->_timeOffset + locIsDST(toLocal(this->_currentEpoc)) + // User offset + dst offset
     this->_currentEpoc + // Epoc returned by the NTP server
     ((millis() - this->_lastUpdate) / 1000); // Time since last update
 }
 
 int NTPClient::getDay()  {
-  return (((this->getEpochTime()  / 86400L) + 4 ) % 7); //0 is Sunday
+  return ((this->getEpochTime() / 86400L) % 7); //0 is Sunday
 }
 int NTPClient::getHours()  {
   return ((this->getEpochTime()  % 86400L) / 3600);
