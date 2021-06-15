@@ -3,8 +3,9 @@
 [![Build Status](https://travis-ci.org/lefty01/NTPClient.svg?branch=master)](https://travis-ci.org/lefty01/NTPClient)
 
 
-[![Check Arduino status](https://github.com/lefty01/NTPClient/actions/workflows/check-arduino.yml/badge.svg)](https://github.com/lefty01/NTPClient/actions/workflows/arduino-lint-check.yml)
-[![Compile Examples status](https://github.com/lefty01/NTPClient/actions/workflows/compile-examples.yml/badge.svg)](https://github.com/lefty01/NTPClient/actions/workflows/arduino-library-example-compile.yml)
+[![Check Arduino status](https://github.com/lefty01/NTPClient/actions/workflows/arduino-lint-check.yml/badge.svg)](https://github.com/lefty01/NTPClient/actions/workflows/arduino-lint-check.yml)
+
+[![Compile Examples status](https://github.com/lefty01/NTPClient/actions/workflows/arduino-library-example-compile.yml/badge.svg)](https://github.com/lefty01/NTPClient/actions/workflows/arduino-library-example-compile.yml)
 
 
 Connect to a NTP server, here is how:
