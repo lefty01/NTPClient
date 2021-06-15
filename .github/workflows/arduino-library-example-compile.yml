@@ -40,10 +40,14 @@ jobs:
 
       matrix:
         board:
-          - fqbn: esp8266:esp8266:huzzah
+          # esp8266 based: generic, d1_mini, d1_mini_pro, nodemcuv2
+          # esp32 based: esp32wrover,  d1_mini32
+          - fqbn: espressif:esp8266:huzzah
             platforms: |
-              - name: esp8266:esp8266
+              - name: espressif:esp8266
                 source-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json
+          - fqbn: espressif:esp32:esp32wrover
+            platforms: |
               - name: espressif:esp32
                 source-url: https://dl.espressif.com/dl/package_esp32_index.json
     steps:
