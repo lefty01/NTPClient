@@ -41,8 +41,8 @@ private:
   UDP*          _udp;
   bool          _udpSetup       = false;
 
-  TimeChangeRule myDST;    //Daylight time = UTC - 4 hours
-  TimeChangeRule mySTD;     //Standard time = UTC - 5 hours
+  TimeChangeRule myDST;    // Daylight time = UTC - 4 hours
+  TimeChangeRule mySTD;    // Standard time = UTC - 5 hours
 
   const char*   _poolServerName = "pool.ntp.org"; // Default time server
   IPAddress     _poolServerIP;
@@ -142,6 +142,11 @@ public:
    * @return time formatted like `hh:mm:ss`
    */
   String getFormattedTime();
+
+  /**
+   * @return time formatted like `dd.mm.yyyy`
+   */
+  String getFormattedDate();
 
   /**
    * @return time in seconds since Jan. 1, 1970

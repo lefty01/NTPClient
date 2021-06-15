@@ -1,6 +1,7 @@
 /**
  * The MIT License (MIT)
  * Copyright (c) 2015 by Fabrice Weinberg
+ * This fork modifications Copyright (c) 2020,2021 al@exitzero.de
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -286,6 +287,10 @@ String NTPClient::getFormattedTime() {
   String secondStr = seconds < 10 ? "0" + String(seconds) : String(seconds);
 
   return hoursStr + ":" + minuteStr + ":" + secondStr;
+}
+
+String NTPClient::getFormattedDate() {
+  return getFormattedDateTime("%d.%m.%Y");
 }
 
 void NTPClient::end() {
