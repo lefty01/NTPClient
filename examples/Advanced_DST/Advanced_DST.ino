@@ -1,8 +1,11 @@
 #include <NTPClient.h>
-// change next line to use with another board/shield
+
+#ifdef ESP32
+#include <WiFi.h>
+#elif defined(ESP8266)
 #include <ESP8266WiFi.h>
-//#include <WiFi.h> // for WiFi shield
-//#include <WiFi101.h> // for WiFi 101 shield or MKR1000
+#endif
+
 #include <WiFiUdp.h>
 
 const char *ssid     = "<SSID>";
